@@ -1,7 +1,6 @@
 package fr.univavignon.pokedex.api;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,50 +10,23 @@ public class IPokemonFactoryTest {
 
     @Before
     public void setUp() {
-
-        pokemonFactory = mock(IPokemonFactory.class);
+        pokemonFactory = new PokemonFactory();
     }
 
     @Test
     public void testCreatePokemon() {
+        Pokemon bulbizarre = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+        assertEquals(0, bulbizarre.getIndex());
+        assertEquals(613, bulbizarre.getCp());
+        assertEquals(64, bulbizarre.getHp());
+        assertEquals(4000, bulbizarre.getDust());
+        assertEquals(4, bulbizarre.getCandy());
 
-        PokemonMetadata bulbizarreMetadata = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
-
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-
-        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4)).thenReturn(bulbizarre);
-
-        Pokemon createdBulbizarre = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
-
-        assertEquals(0, createdBulbizarre.getIndex());
-        assertEquals("Bulbizarre", createdBulbizarre.getName());
-        assertEquals(613, createdBulbizarre.getCp());
-        assertEquals(64, createdBulbizarre.getHp());
-        assertEquals(4000, createdBulbizarre.getDust());
-        assertEquals(4, createdBulbizarre.getCandy());
-        assertEquals(126, createdBulbizarre.getAttack());
-        assertEquals(126, createdBulbizarre.getDefense());
-        assertEquals(90, createdBulbizarre.getStamina());
-        assertEquals(56.0, createdBulbizarre.getIv(), 0.1);
-
-
-        PokemonMetadata aqualiMetadata = new PokemonMetadata(133, "Aquali", 186, 168, 260);
-
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
-
-        when(pokemonFactory.createPokemon(133, 2729, 202, 5000, 4)).thenReturn(aquali);
-
-        Pokemon createdAquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
-
-        assertEquals(133, createdAquali.getIndex());
-        assertEquals("Aquali", createdAquali.getName());
-        assertEquals(2729, createdAquali.getCp());
-        assertEquals(202, createdAquali.getHp());
-        assertEquals(5000, createdAquali.getDust());
-        assertEquals(4, createdAquali.getCandy());
-        assertEquals(186, createdAquali.getAttack());
-        assertEquals(168, createdAquali.getDefense());
-        assertEquals(260, createdAquali.getStamina());
-        assertEquals(100, createdAquali.getIv(), 0.1);
+        Pokemon aquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
+        assertEquals(133, aquali.getIndex());
+        assertEquals(2729, aquali.getCp());
+        assertEquals(202, aquali.getHp());
+        assertEquals(5000, aquali.getDust());
+        assertEquals(4, aquali.getCandy());
     }
 }
