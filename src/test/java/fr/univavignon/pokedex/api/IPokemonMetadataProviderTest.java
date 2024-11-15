@@ -1,10 +1,8 @@
 package fr.univavignon.pokedex.api;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import fr.univavignon.pokedex.api.IPokemonMetadataProvider;
 
 public class IPokemonMetadataProviderTest {
 
@@ -12,31 +10,23 @@ public class IPokemonMetadataProviderTest {
 
     @Before
     public void setUp() {
-
-        metadataProvider = mock(IPokemonMetadataProvider.class);
-
+        metadataProvider = new PokemonMetadataProvider();
     }
 
     @Test
     public void testGetPokemonMetadata() throws Exception {
+        PokemonMetadata bulbizarre = metadataProvider.getPokemonMetadata(0);
+        assertEquals(0, bulbizarre.getIndex());
+        assertEquals("Bulbizarre", bulbizarre.getName());
+        assertEquals(126, bulbizarre.getAttack());
+        assertEquals(126, bulbizarre.getDefense());
+        assertEquals(90, bulbizarre.getStamina());
 
-        when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
-
-        PokemonMetadata Bulbizarre = metadataProvider.getPokemonMetadata(0);
-        assertEquals(0, Bulbizarre.getIndex());
-        assertEquals("Bulbizarre", Bulbizarre.getName());
-        assertEquals(126, Bulbizarre.getAttack());
-        assertEquals(126, Bulbizarre.getDefense());
-        assertEquals(90, Bulbizarre.getStamina());
-
-
-        when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
-
-        PokemonMetadata Aquali = metadataProvider.getPokemonMetadata(133);
-        assertEquals(133, Aquali.getIndex());
-        assertEquals("Aquali", Aquali.getName());
-        assertEquals(186, Aquali.getAttack());
-        assertEquals(168, Aquali.getDefense());
-        assertEquals(260, Aquali.getStamina());
+        PokemonMetadata aquali = metadataProvider.getPokemonMetadata(133);
+        assertEquals(133, aquali.getIndex());
+        assertEquals("Aquali", aquali.getName());
+        assertEquals(186, aquali.getAttack());
+        assertEquals(168, aquali.getDefense());
+        assertEquals(260, aquali.getStamina());
     }
 }
