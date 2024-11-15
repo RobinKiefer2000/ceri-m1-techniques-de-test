@@ -20,18 +20,20 @@ public class IPokemonTrainerFactoryTest {
     public void testCreateTrainer() {
 
         String trainerName = "Sacha";
+        Team team = Team.MYSTIC;
         IPokedex pokedex = mock(IPokedex.class);
 
-        PokemonTrainer trainer = new PokemonTrainer(trainerName, Team.MYSTIC, pokedex);
+        PokemonTrainer trainer = new PokemonTrainer(trainerName, team, pokedex);
 
-        when(trainerFactory.createTrainer(trainerName, Team.MYSTIC,pokedexFactory)).thenReturn(trainer);
+        when(trainerFactory.createTrainer(trainerName, team,pokedexFactory)).thenReturn(trainer);
 
-        PokemonTrainer createdTrainer = trainerFactory.createTrainer(trainerName, Team.MYSTIC, pokedexFactory);
+        PokemonTrainer createdTrainer = trainerFactory.createTrainer(trainerName, team, pokedexFactory);
 
         assertNotNull(createdTrainer);
         assertEquals(trainerName, createdTrainer.getName());
+        assertEquals(team, createdTrainer.getTeam());
         assertEquals(pokedex, createdTrainer.getPokedex());
 
-        verify(trainerFactory, times(1)).createTrainer(trainerName,Team.MYSTIC, pokedexFactory);
+        verify(trainerFactory, times(1)).createTrainer(trainerName,team, pokedexFactory);
     }
 }

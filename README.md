@@ -8,6 +8,18 @@
 
 [![codecov](https://codecov.io/github/RobinKiefer2000/ceri-m1-techniques-de-test/graph/badge.svg?token=C8ZVY3MYN6)](https://codecov.io/github/RobinKiefer2000/ceri-m1-techniques-de-test)
 
+## Description
+
+Ce projet est un Pokédex développé dans le cadre de l'UE Techniques de test.
+
+## Choix techniques d’implémentation
+
+- **Outils de test** : JUnit, Mockito pour les tests unitaires et de mocks.
+- **Intégration continue** : CircleCI pour automatiser la compilation et l'exécution des tests.
+- **Couverture de code** : JaCoCo pour générer les rapports et Codecov pour l'affichage de la couverture de code.
+
+
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
