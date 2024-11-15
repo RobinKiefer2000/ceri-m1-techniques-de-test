@@ -29,4 +29,13 @@ public class IPokemonFactoryTest {
         assertEquals(5000, aquali.getDust());
         assertEquals(4, aquali.getCandy());
     }
+
+    @Test
+    public void testGetIv() {
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56.0);
+        assertEquals(56.0, bulbizarre.getIv(), 0.001);
+
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100.0);
+        assertEquals(100.0, aquali.getIv(), 0.001);
+    }
 }
